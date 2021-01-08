@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -24,9 +25,17 @@ import { Component } from '@angular/core';
       </li>
     </ul>
     
+    
+    <div>{{form | fc:'control'}}</div>
+    <div>{{(form | fa:'array').controls}}</div>
   `,
   styles: []
 })
 export class AppComponent {
   title = 'test-form-pipe';
+  form = new FormGroup({
+    control: new FormControl(),
+    array: new FormArray([]),
+    group: new FormGroup({})
+  })
 }
